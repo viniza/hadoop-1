@@ -899,9 +899,9 @@ public class DynamoDBMetadataStore implements MetadataStore,
     List<DDBPathMetadata> sortedPaths = new ArrayList<>(pathsToCreate);
     sortedPaths.sort(PathOrderComparators.TOPMOST_PM_FIRST);
     // iterate through the paths.
-    for (DDBPathMetadata meta : sortedPaths) {
-      Preconditions.checkArgument(meta != null);
-      Path path = meta.getFileStatus().getPath();
+    for (DDBPathMetadata entry : sortedPaths) {
+      Preconditions.checkArgument(entry != null);
+      Path path = entry.getFileStatus().getPath();
       LOG.debug("Adding entry {}", path);
       if (path.isRoot()) {
         // this is a root entry: do not add it.
